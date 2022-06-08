@@ -427,9 +427,7 @@
         </span>
       </div>
       <div style='color: #FFF'>
-        <span id='bonuses'>
-          <span data-t='bonus'></span>
-        </span>
+        <span data-t='bonus' id='special-clicker' style='cursor: pointer'></span>
       </div>
       <div class='bottom-shadow'></div>
     </div>
@@ -570,6 +568,12 @@
       </div>
       <div class='bottom-shadow'></div>
     </div>
+    <div class='modal hidden' id='modal-special'>
+      <p class='title' data-t='special'></p>
+      <div id='special-container'>
+      </div>
+      <div class='bottom-shadow'></div>
+    </div>
     <div class='modal hidden' id='modal-options'>
       <p class='title' data-t='opt-title'></p>
       <div class='options-btns-list'>
@@ -678,6 +682,7 @@ const guideToToday = <%= it.guideToToday %>;
 const todayDaily = <%~ JSON.stringify(it.todayDaily) %>;
 
 const availablePuzzleIds = <%~ JSON.stringify(it.availablePuzzleIds) %>;
+const specialPuzzleIds = <%~ JSON.stringify(it.specialPuzzleIds) %>;
 
 const i18nVars = '<%~ (it.i18nVars) %>';
 </script>

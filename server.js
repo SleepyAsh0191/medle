@@ -253,18 +253,24 @@ const servePuzzle = async (req, puzzleId, checkToday) => {
   const puzzleNames = fs.readdirSync("./puzzles/", {
     withFileTypes: true
   });
-  const validPuzzleIds = []
+  const validPuzzleIds = [], specialPuzzleIds = []
   for (const entry of puzzleNames) {
     if (entry.isDirectory()) continue;
     const fileName = entry.name;
+    let index = fileName.substring(0, fileName.length - 4); // remove the file extension '.yml'
+    const isSpecial = !!fileName.match(/^[A-Za-z]{3}\.yml$/g);
+    if (isSpecial) {
+      specialPuzzleIds.push(index);
+      continue;
+    }
     const isValid = !!fileName.match(/^[0-9]{3,}(EX|PH)?\.yml$/g);
     if (!isValid) continue;
-    let index = fileName.substring(0, fileName.length - 4); // remove the file extension '.yml'
     let decomposition = getPuzzleId(index);
     if (decomposition[0] > todaysPuzzleIndex()) continue; // should not show the future puzzles.
     validPuzzleIds.push(index);
   }
   puzzleContents.availablePuzzleIds = validPuzzleIds;
+  puzzleContents.specialPuzzleIds = specialPuzzleIds;
   puzzleContents.currentTime = Date.now();
 
   log(`puzzle ${puzzleId} ${analytics(req)}`);
