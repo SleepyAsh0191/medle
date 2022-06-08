@@ -238,7 +238,8 @@ const sendAnalytics = async (contents) => {
 const audios = {};
 const paths = [
   ['/static/samples/pop.wav'],
-  ['/static/samples/beat.wav']
+  ['/static/samples/beat.wav'],
+  ['/static/samples/strongBeat.wav']
 ];
 
 const notesReachable = {};
@@ -286,6 +287,7 @@ const preloadSounds = (callback) => {
 const playSound = (name, vol) => {
   if (!sfxOn) return;
   if (name === 'beat' && !metronomeOn) return;
+  if (name === 'strongBeat' && !metronomeOn) return;
   const id = audios[name].play();
   audios[name].volume(vol !== undefined ? vol : 1, id);
   return [name, id];
@@ -656,7 +658,12 @@ const startGame = (savedGuesses = []) => {
         replayTimers.push(timer);
       }
       for (let t = metronome[0]; t < tuneDur; t += metronome[1]) {
-        let timer = setTimeout(() => playSound('beat'),
+        let timer = setTimeout(() => playSound('beat', 0.5),
+          (t + metronomeOffset()) * tuneBeatDur + 20 + Math.max(0, musicOffset));
+        replayTimers.push(timer);
+      }
+      for (let t = metronome[0] + metronome[1] * metronome[2]; t < tuneDur; t += metronome[1] * metronome[3]) {
+        let timer = setTimeout(() => playSound('strongBeat', 0.5),
           (t + metronomeOffset()) * tuneBeatDur + 20 + Math.max(0, musicOffset));
         replayTimers.push(timer);
       }
@@ -717,7 +724,12 @@ const startGame = (savedGuesses = []) => {
         replayTimers.push(timer);
       }
       for (let t = metronome[0]; t < tuneDur; t += metronome[1]) {
-        const timer = setTimeout(() => playSound('beat'),
+        const timer = setTimeout(() => playSound('beat', 0.5),
+          (t + metronomeOffset()) * tuneBeatDur + 20 + Math.max(0, musicOffset));
+        replayTimers.push(timer);
+      }
+      for (let t = metronome[0] + metronome[1] * metronome[2]; t < tuneDur; t += metronome[1] * metronome[3]) {
+        let timer = setTimeout(() => playSound('strongBeat', 0.5),
           (t + metronomeOffset()) * tuneBeatDur + 20 + Math.max(0, musicOffset));
         replayTimers.push(timer);
       }
@@ -812,11 +824,16 @@ const startGame = (savedGuesses = []) => {
             if (pop) playPopForPos(i);
           }, 500 + (ts[j] + metronomeOffset()) * tuneBeatDur);
         }
-        if (!silence)
+        if (!silence){
           for (let t = metronome[0]; t < tuneDur; t += metronome[1]) {
-            setTimeout(() => playSound('beat'),
+            setTimeout(() => playSound('beat', 0.5),
               500 + (t + metronomeOffset()) * tuneBeatDur + Math.max(0, musicOffset));
           }
+          for (let t = metronome[0] + metronome[1] * metronome[2]; t < tuneDur; t += metronome[1] * metronome[3]) {
+            setTimeout(() => playSound('strongBeat', 0.5),
+              500 + (t + metronomeOffset()) * tuneBeatDur + Math.max(0, musicOffset));
+          }
+        }
       }
     attInputs.push(input);
     attResults.push(result);
@@ -1030,12 +1047,17 @@ const startGame = (savedGuesses = []) => {
           sortList[p][0] * tuneRevealBeatDur + tuneRevealOffset + Math.max(0, -musicOffset));
           revealBubbleTimers.push(timer);
         }
-        for (let t = metronome[0]; t <= tuneDur; t += metronome[1]) {
+        for (let t = metronome[0], cnt = metronome[2]; t <= tuneDur; t += metronome[1], cnt -= 1) {
+          if (cnt === 0) cnt += metronome[3];
           let timer = setTimeout(() => {
              const beat = document.createElement('div');
              beat.classList.add('visualizeBeat');
              beat.style.top = '0px';
              beat.style.transition = 'transform ' + (hgt / speed) + 's linear';
+             if (cnt === metronome[3]) {
+              beat.style.height = '2px';
+              beat.classList.add('deep');
+            }
              box.appendChild(beat);
              setTimeout(() => {
               beat.style.transform = `translateY(${hgt}px)`;
@@ -1298,7 +1320,7 @@ const getPuzzleId = (index) => {
 
 let currentPuzzleLink = undefined;
 
-const puzzleLink = (index) => {
+const puzzleLink = (index, showDate = true) => {
   let decomposition = getPuzzleId(index);
   let id = decomposition[0];
   // let suffix = decomposition[1];
@@ -1306,11 +1328,16 @@ const puzzleLink = (index) => {
   const a = document.createElement('a');
   a.classList.add('puzzle-link');
   date.setDate(date.getDate() + (id - 1));
-  a.innerHTML =
-    date.getFullYear() + '.' +
-    (date.getMonth() + 1).toString().padStart(2, '0') + '.' +
-    (date.getDate()).toString().padStart(2, '0') +
-    ` — <strong>${index}</strong>`;
+  if (showDate)
+    a.innerHTML =
+      date.getFullYear() + '.' +
+      (date.getMonth() + 1).toString().padStart(2, '0') + '.' +
+      (date.getDate()).toString().padStart(2, '0') +
+      ` — <strong>${index}</strong>`;
+  else 
+    a.innerHTML =
+      `<span data-t='hidden'></span>` +
+      ` — <strong>${index}</strong>`;
   let stat = localStorage.getItem('problemStatus-' + index);
   if (stat !== null && stat !== "0" && index !== puzzleId) {
     if (stat === 'fail')
@@ -1327,6 +1354,29 @@ const puzzleLink = (index) => {
   }
   return a;
 };
+
+const specialPuzzles = () => {
+  document.getElementById('special-clicker').addEventListener('click', () => {
+    showModal('modal-special');
+    if (currentPuzzleLink !== undefined && ! isDaily) {
+      const ot = currentPuzzleLink.offsetTop;
+      const hgt = currentPuzzleLink.clientHeight;
+      const H = document.getElementById('modal-special').clientHeight;
+      const cent = ot + hgt / 2;
+      document.getElementById('modal-special').scrollTop = cent - H / 2;
+    }
+
+  });
+  const container = document.getElementById('special-container');
+  specialPuzzleIds.sort((x, y) => {
+    return x < y ? -1 : 1;
+  })
+  for (let id of specialPuzzleIds) {
+    container.appendChild(puzzleLink(id, false));
+  }
+};
+
+specialPuzzles();
 
 if (isDaily) {
   document.getElementById('icon-btn-archive').addEventListener('click', () => {
@@ -1422,7 +1472,7 @@ const initToggleButton = (ids, cfgKey, defaultVal, fn) => {
 };
 initToggleButton('btn-play-sfx', 'sfx', true, (on) => sfxOn = on);
 initToggleButton('btn-metronome', 'metronome', false, (on) => metronomeOn = on);
-initToggleButton('btn-flow', 'flow', false, (on) => useWaterflow = on);
+initToggleButton('btn-flow', 'flow', true, (on) => useWaterflow = on);
 initToggleButton('btn-dark-theme', 'dark',
   window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches,
   (on) => {

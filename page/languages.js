@@ -21,7 +21,8 @@ window.languages = [
     'links': '也试试其他版本的 Medle ？ ',
     'link-1': 'Medle',
     'link-2': 'VOCALO Medle',
-    'bonus': '隐藏关：GXD，GMV，CLC，UNQ，ARP。（将 001 等改为这些字母串即可）',
+    'link-3': 'A-SOUL Medle',
+    'bonus': '显示隐藏关',
     'guide-today-1-pfx': '正在访问的是一份过往的谜题 ',
     'guide-today-1-sfx': '。',
     'guide-today-2-pfx': '希望继续游玩，还是前往今天的每日谜题 ',
@@ -32,6 +33,7 @@ window.languages = [
     'curator': '选题',
     'curator-today': '今日选题',
     'archive': '过往谜题',
+    'special': '隐藏谜题',
     'opt-title': '选项',
     'opt-sfx': '播放声音',
     'opt-metronome': '节拍提示',
@@ -72,7 +74,8 @@ window.languages = [
     'total-puzzles': '总共完成猜谜',
     'accuracy': '成功率',
     'average-steps': '平均步数',
-    'total-pass-person': '完成猜谜人数'
+    'total-pass-person': '完成猜谜人数',
+    'hidden': 'Bonus'
   }],
   ['en', 'English', {
     'loading': 'Loading…',
@@ -96,7 +99,7 @@ window.languages = [
     'links': 'Try other versions of Medle? ',
     'link-1': ' Medle',
     'link-2': ' VOCALO Medle',
-    'bonus': 'Bonus levels: GXD, GMV, CLC, UNQ, ARP.(To be entered into URL)',
+    'bonus': 'Show bonus levels',
     'guide-today-1-pfx': 'You are currently visiting a past puzzle ',
     'guide-today-1-sfx': '.',
     'guide-today-2-pfx': 'Would you like to continue playing, or visit today\'s daily puzzle ',
@@ -107,6 +110,7 @@ window.languages = [
     'curator': 'Curator',
     'curator-today': 'Today\'s curator',
     'archive': 'Puzzle Archive',
+    'special': 'Special Puzzles',
     'opt-title': 'Options',
     'opt-sfx': 'Play sound',
     'opt-metronome': 'Metronome',
@@ -126,7 +130,7 @@ window.languages = [
     'opt-stat': 'Statistic mode',
     'opt-stat-1': 'Overall',
     'opt-stat-2': 'Daily',
-    'opt-stat-3': 'Hidden',
+    'opt-stat-3': 'Bonus',
     'opt-stat-tip': 'Note: datas before puzzle #005 won\'t automately be added. Please visit the puzzles in order to add them.',
     'next-puzzle': 'Next puzzle of this day:',
     'visitors': 'people tried this puzzle.',
@@ -147,6 +151,7 @@ window.languages = [
     'total-puzzles': 'Finished puzzles',
     'accuracy': 'Accuracy',
     'average-steps': 'Average Step',
-    'total-pass-person': 'Passed people count'
+    'total-pass-person': 'Passed people count',
+    'hidden': 'Bonus'
   }],
 ];

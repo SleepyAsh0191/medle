@@ -456,9 +456,9 @@ body.nota-aikin .fg > .bubble.solf-7 > div.content:before { content: '\f041'; }
 body.dark .tune-dot {
   background: #fdfdfd;
 }
-body.nota-alpha .tune-dot {
+/* body.nota-alpha .tune-dot {
   opacity: 0;
-}
+} */
 .tune-dot.ottava {
   top: -8%;
 }
@@ -941,9 +941,6 @@ body.dark a.puzzle-link.success {
   background: rgba(128, 216, 48, 40%);
   border: 2px solid #8a8;
 }
-body.dark a.puzzle-link.success:active {
-  background: rgba(98, 186, 18, 40%);
-}
 a.puzzle-link.fail {
   background: rgb(244, 89, 89, 20%);
   border: 2px dashed #822;
@@ -953,10 +950,6 @@ a.puzzle-link.fail:active {
 }
 body.dark a.puzzle-link.fail {
   background: rgb(255, 58, 58, 40%);
-  border: 2px dashed #c88;
-}
-body.dark a.puzzle-link.fail:active {
-  background: rgb(225, 28, 28, 40%);
   border: 2px dashed #c88;
 }
 
@@ -1188,8 +1181,16 @@ body.dark .visualizeNote {
   left: 0;
 }
 
+.visualizeBeat.deep {
+  background: #444;
+}
+
 body.dark .visualizeBeat {
   background: #999;
+}
+
+body.dark .visualizeBeat.deep {
+  background: #aaa;
 }
 
 .visualizeNote.highlighted {
