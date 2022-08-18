@@ -180,7 +180,8 @@ const noSuchPuzzle = () => Response('No such puzzle > <\n', {
 });
 
 const servePuzzle = async (req, puzzleId, checkToday) => {
-  const today = todaysPuzzle();
+  // const today = todaysPuzzle();
+  const today = "001";
   if (puzzleId === undefined) puzzleId = today;
 
   const file = `puzzles/${puzzleId}.yml`;
@@ -337,7 +338,7 @@ const request_manage = async function(req, res) {
     // Custom puzzle
     if (url.pathname.match(/^\/[A-Za-z0-9]+$/g)) {
       const puzzleId = url.pathname.substring(1);
-      if (!debug && url.pathname.match(/^\/[0-9]+$/g) && parseInt(puzzleId) > todaysPuzzleIndex())
+      if (!debug && url.pathname.match(/^\/[0-9]+(EX|PH)?$/g) && parseInt(puzzleId) > todaysPuzzleIndex())
         return noSuchPuzzle();
       return servePuzzle(req, puzzleId, url.search !== '?past');
     }
