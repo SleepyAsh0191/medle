@@ -108,6 +108,7 @@ const createRow = (decos, parentEl, rowIndex) => {
   const el1 = div(parentEl, 'list');
   const el2 = div(el1, 'bg');
   const el3 = div(el1, 'fg');
+  let lastAppo = false;
   for (let i = 0; i < n; i++) {
     const el4a = n <= 10 ? div(el2, 'bubble') : div(el2, 'small-bubble');
     const el5a = div(el4a, 'content');
@@ -124,6 +125,14 @@ const createRow = (decos, parentEl, rowIndex) => {
     if (decos[i] & DECO_APPO) {
       el4a.classList.add('appo');
       el4b.classList.add('appo');
+      lastAppo = true;
+    }
+    else if (lastAppo) {
+      el4a.classList.add('appo');
+      el4b.classList.add('appo');
+      el4a.classList.add('major');
+      el4b.classList.add('major');
+      lastAppo = false;
     }
     div(el5a, 'accidental');
   }
@@ -1415,17 +1424,17 @@ if (isDaily) {
     container.appendChild(puzzleLink(id + suffix));
   }
 }
-if (guideToToday) {
-  const guideLinks = document.getElementById('guide-today-links');
-  guideLinks.appendChild(puzzleLink(puzzleId));
-  guideLinks.appendChild(puzzleLink(todayDaily));
-  let suffix = 'a';
-  while (availablePuzzleIds.indexOf(todayDaily + suffix) != -1) {
-    guideLinks.appendChild(puzzleLink(todayDaily + suffix));
-    suffix = String.fromCharCode(suffix.charCodeAt(0) + 1);
-  }
-  showModal('modal-guide-today');
-}
+// if (guideToToday) {
+//   const guideLinks = document.getElementById('guide-today-links');
+//   guideLinks.appendChild(puzzleLink(puzzleId));
+//   guideLinks.appendChild(puzzleLink(todayDaily));
+//   let suffix = 'a';
+//   while (availablePuzzleIds.indexOf(todayDaily + suffix) != -1) {
+//     guideLinks.appendChild(puzzleLink(todayDaily + suffix));
+//     suffix = String.fromCharCode(suffix.charCodeAt(0) + 1);
+//   }
+//   showModal('modal-guide-today');
+// }
 
 if (localStorage.first === undefined) {
   showModal('modal-intro');
@@ -1513,11 +1522,11 @@ const updateInterfaceLanguage = () => {
     const key = el.dataset.t;
     if (key[0] === '=') {
       if (el.tagName === 'IMG')
-        el.alt = langVars[key.substring(1)];
+        el.alt = langVars[key.substring(1)].replace(/\n/g, "<br>");
       else
-        el.innerText = langVars[key.substring(1)];
+        el.innerHTML = langVars[key.substring(1)].replace(/\n/g, "<br>");
     } else {
-      el.innerText = dict[key];
+      el.innerHTML = dict[key];
     }
   }
   for (const btnLang of btnLangs)
