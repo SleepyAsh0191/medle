@@ -1,31 +1,38 @@
 tune:
-  - [6, 2]
-  - [5, 2]
-  - [6, 2]
-  - [3, 2]
-  - [1, 2]
-  - [7-, 2]
-  - [1, 2]
-  - [6-, 1]
-  - [7-, 1]
-  - [1, 4]
-  - [1+, 4]
-  - [7, 4]
-  - [5, 4]
-tuneBeatDur: 110
-tunePitchBase: C5
+  - [5, 2.7]
+  - [2+, 1.7]
+  - [6, 0.7]
+  - [7b, 0.7]
+  - [6, 2.5]
+  - [4, 2.2]
+  - [1, 1.2]
+  - [2, 1.2]
+  - [6, 1.2]
+  - [7b, 1.2]
+  - [6, 0.7]
+  - [7b, 0.7]
+  - [6, 1.2]
+  - [4, 1.2]
+  - [1, 1.2]
+  - [6-, 1.2]
+
+
+
+tuneBeatDur: 85
+tunePitchBase: C#5
 metronome: [0, 4]
 
-tuneRevealBeatDur: 15000/163
-tuneRevealOffset: 0
+tuneRevealBeatDur: 15000/120
+tuneRevealOffset: 15000/120*80
 
 zh-Hans:
-  title: 哈德曼的妖怪少女（ハルトマンの妖怪少女）
-  author: Zun
-  desc: 东方地灵殿中，Extra面BOSS古明地恋的主题曲。
-en:
-  title: Hartmann's Youkai Girl（ハルトマンの妖怪少女）
-  author: Zun
-  desc: The extra stage boss Koishi Komeiji's theme, from Subterranean Animism.
+  title: PUPA
+  author: モリモリあつし
+  desc: PUPA是モリモリあつし参与BOF系列大赛G2R2014（G2R2014 "GO BACK 2 YOUR ROOTS" -THE BMS OF FIGHTERS 2004 RELOADED-）的曲目，并获得了G2R2014个人战第22名。注：本题目的速度有问题。
 
-curator: 榆木华
+en:
+  title: PUPA
+  author: モリモリあつし
+  desc: PUPA is a track that モリモリあつし participated in the BOF series competition G2R2014 (G2R2014 "GO BACK 2 YOUR ROOTS" -THE BMS OF FIGHTERS 2004 RELOADED-), and won the 22nd place in the G2R2014 individual competition.
+
+curator: WhkSoft

@@ -1,28 +1,32 @@
 tune:
-  - [3, 12]
-  - [2, 2]
-  - [5, 2]
-  - [3, 6]
-  - [2, 6]
-  - [1, 4]
-  - [7-, 6]
-  - [1, 6]
-  - [2, 4]
-  - [3, 16]
-tuneBeatDur: 100
-tunePitchBase: A#4
+  - [5#, 1, 2]
+  - [5, 1, 2]
+  - [2#, 1, 2]
+  - [1, 1, 2]
+  - [4, 2, 0]
+  - [2#, 2]
+  - [6#, 2]
+  - [2#, 1]
+  - [6#, 2]
+  - [2#, 1]
+  - [6#, 2]
+  - [5#, 2, 2]
+  - [6#, 2]
+  - [1+, 1]
+tuneBeatDur: 87
+tunePitchBase: C5
 metronome: [0, 4]
 
-tuneRevealBeatDur: 15000/155
-tuneRevealOffset: 0
+tuneRevealBeatDur: 15000/173
+tuneRevealOffset: 15000/173*50
 
 zh-Hans:
-  title: 往来于运河的人与妖（運河を行き交う人妖）
-  author: Zun
-  desc: 东方辉针城2面主题曲。
+  title: FLOWER
+  author: DJ YOSHITAKA
+  desc: FLOWER是出自jubeat系列游戏第三代jubeat knit APPEND的曲目。
 en:
-  title: Humans and Youkai Traversing the Canal（運河を行き交う人妖）
-  author: Zun
-  desc: The stage 2 theme from Double Dealing Character.
+  title: PUPA
+  author: DJ YOSHITAKA
+  desc: FLOWER is a track from jubeat knit APPEND, the third generation of the jubeat series.
 
-curator: 榆木华
+curator: WhkSoft

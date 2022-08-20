@@ -1,10 +1,10 @@
-# TOUHOU Medle
+# OTOGE Medle
 
-[**medle.akashiya.top**](https://medle.akashiya.top/)
+[**medle.whksoft.cn**](https://medle.whksoft.cn/)
 
-曲库为东方曲的旋律猜谜游戏，每日更新~
+曲库为音游曲的旋律猜谜游戏，每日更新~
 
-TOUHOU melody puzzle game (available in en/zh)
+Rhythm games melody puzzle game (available in en/zh)
 
 ## [zh] 服务端程序
 

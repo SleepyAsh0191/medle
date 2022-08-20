@@ -906,7 +906,7 @@ const startGame = (savedGuesses = []) => {
   new ClipboardJS(btnShare, {
     text: () => {
       btnShare.classList.add('copied');
-      const prefix = `TOUHOU Medle ${puzzleId} ${succeeded ? attResults.length : 'X'}/${attemptsLimit}\n`;
+      const prefix = `OTOGE Medle ${puzzleId} ${succeeded ? attResults.length : 'X'}/${attemptsLimit}\n`;
       const suffix = `https://medle.akashiya.top/` +
         (puzzleId === todayDaily ? '' : puzzleId);
       return prefix +
@@ -1333,7 +1333,7 @@ const puzzleLink = (index, showDate = true) => {
   let decomposition = getPuzzleId(index);
   let id = decomposition[0];
   // let suffix = decomposition[1];
-  let date = new Date('2022-05-27');
+  let date = new Date('2021-08-15');
   const a = document.createElement('a');
   a.classList.add('puzzle-link');
   date.setDate(date.getDate() + (id - 1));

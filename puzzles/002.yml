@@ -1,26 +1,30 @@
 tune:
-  - [2, 14, -12]
-  - [3, 2]
-  - [1+, 12, -10]
-  - [7, 12, -10]
-  - [5, 12, -8]
-  - [1, 12]
-  - [3, 4]
+  - [5, 3]
+  - [4, 3]
   - [5, 4]
-tuneBeatDur: 90
-tunePitchBase: F#4
-metronome: [-2, 4]
+  - [2, 1, 1]
+  - [4, 2]
+  - [5, 2]
+  - [7b, 2]
+  - [5, 2]
+  - [4, 2]
+  - [5, 1, 3]
+  - [4, 4]
 
-tuneRevealBeatDur: 15000/170
-tuneRevealOffset: 15000/170*2
+tuneBeatDur: 85
+tunePitchBase: C#4
+metronome: [0, 4]
+
+tuneRevealBeatDur: 15000/180
+tuneRevealOffset: 15000/180*15
 
 zh-Hans:
-  title: Seraphic Chicken（セラフィックチキン）
-  author: Zun
-  desc: 东方鬼形兽中，3面BOSS庭渡久侘歌的主题曲。
+  title: GOODBOUNCE
+  author: EBIMAYO
+  desc: 《GOODBOUNCE》是作曲家EBIMAYO参与BOF系列大赛BOFU2016（BOFU2016 - LEGENDARY AGAIN -）的参赛曲目，取得了当届比赛的个人战第4名。
 en:
-  title: Seraphic Chicken（セラフィックチキン）
-  author: Zun
-  desc: The stage 3 boss Kutaka Niwatari's theme, from Wily Beast and Weakest Creature.
+  title: GOODBOUNCE
+  author: EBIMAYO
+  desc: GOODBOUNCE is a song that composer EBIMAYO participated in the BOF series contest BOFU2016 (BOFU2016 - LEGENDARY AGAIN -), and won the fourth place in the individual competition of the competition.
 
-curator: 榆木华
+curator: WhkSoft

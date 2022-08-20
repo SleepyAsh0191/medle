@@ -119,7 +119,7 @@ const debug = false;
 const indexHtmlContents = new TextDecoder().decode(fs.readFileSync('page/index.html'));
 const indexTemplate = etaCompile(indexHtmlContents);
 
-const epoch = new Date('2022-05-26T16:00:00Z');
+const epoch = new Date('2021-08-15T16:00:00Z');
 const todaysPuzzleIndex = () => Math.ceil((new Date() - epoch) / 86400000);
 const todaysPuzzle = () => todaysPuzzleIndex().toString().padStart(3, '0');
 
@@ -180,7 +180,7 @@ const noSuchPuzzle = () => Response('No such puzzle > <\n', {
 });
 
 const servePuzzle = async (req, puzzleId, checkToday) => {
-  // const today = todaysPuzzle();
+  //const today = todaysPuzzle();
   const today = "001";
   if (puzzleId === undefined) puzzleId = today;
 
@@ -394,10 +394,10 @@ const handler = async (req, res) => {
   respond_request(resp, res);
 };
 
-const port = process.env.PORT;
-// const port = 2222;
-// log(`http://localhost:${port}/`);
+//const port = process.env.PORT;
+const port = 6480;
+log(`http://localhost:${port}/`);
 
 const server = http.createServer(handler)
 
-server.listen(port, () => {})
+server.listen(port, "0.0.0.0", () => {})
