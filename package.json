@@ -1,7 +1,7 @@
 {
   "name": "test",
   "version": "1.0.0",
-  "description": "曲库为东方曲的旋律猜谜游戏，不定期更新\r TOUHOU melody puzzle game (available in en/zh)",
+  "description": "曲库为音游曲的旋律猜谜游戏，不定期更新\r OTOGE melody puzzle game (available in en/zh)",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
